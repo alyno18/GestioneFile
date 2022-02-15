@@ -17,20 +17,28 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnLeggi;
         Button btnInserisci;
+        EditText edtInserisciFile;
         TextView txtVisualizzaFile;
-        EditText txtInserisciFile;
         Gestore gf;
 
         btnLeggi =findViewById(R.id.leggi);
         btnInserisci=findViewById(R.id.inserisci);
-        txtInserisciFile=findViewById(R.id.editTextFile);
+        edtInserisciFile=findViewById(R.id.editTextFile);
         txtVisualizzaFile=findViewById(R.id.textViewFile);
 
+        String nomeFile = edtInserisciFile.getText().toString();
         gf = new Gestore();
         btnLeggi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gf.leggiFile(String nomeFile, getApplicationContext());
+                gf.leggiFile(nomeFile, getApplicationContext());
+            }
+        });
+
+        btnInserisci.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gf.scriviFile(nomeFile, getApplicationContext());
             }
         });
     }
