@@ -1,12 +1,15 @@
 package com.example.gestionefile;
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
@@ -31,7 +34,7 @@ public class Gestore {
     }
 
     public String scriviFile(String nomeFile, Context c){
-        String esito;
+        String esito = "";
         FileOutputStream fileO;
         String testoDaScrivere = "Questo + il testo che voglio scrivere";
         try{
@@ -43,6 +46,22 @@ public class Gestore {
         }
         catch (IOException e) {
             esito = "Impossibile scrivere il file";
+        }
+        return esito;
+    }
+
+    public String leggiFileRaw(Context c){
+        Resources res = c.getResources();
+        InputStream fileLetto = res.openRawResource(R.raw.brani);
+        return "";
+    }
+
+    public String leggiFileAssets(Context c){
+        AssetManager am = c.getAssets();
+        try {
+            InputStream is = am.open("brani.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return "";
     }
