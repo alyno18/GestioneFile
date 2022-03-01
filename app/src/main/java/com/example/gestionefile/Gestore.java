@@ -50,16 +50,32 @@ public class Gestore {
         return esito;
     }
 
-    public String leggiFileRaw(Context c){
+    public String leggiFileRaw(Context c) {
+        String testoDaRestituire;
+        StringBuilder sb = new StringBuilder();
         Resources res = c.getResources();
         InputStream fileLetto = res.openRawResource(R.raw.brani);
+        BufferedReader br = new BufferedReader(new InputStreamReader(fileLetto));
+        try {
+            while ((testoDaRestituire = br.readLine()) != null) {
+                sb.append(testoDaRestituire + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "";
     }
 
     public String leggiFileAssets(Context c){
+        String testoDaRestituire;
+        StringBuilder sb = new StringBuilder();
         AssetManager am = c.getAssets();
         try {
             InputStream is = am.open("brani.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            while ((testoDaRestituire = br.readLine()) != null) {
+                sb.append(testoDaRestituire + "\n");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
