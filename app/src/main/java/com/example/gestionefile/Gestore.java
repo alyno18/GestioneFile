@@ -50,11 +50,11 @@ public class Gestore {
         return esito;
     }
 
-    public String leggiFileRaw(Context c) {
+    public String leggiFileRaw(Context c, int id) {
         String testoDaRestituire;
         StringBuilder sb = new StringBuilder();
         Resources res = c.getResources();
-        InputStream fileLetto = res.openRawResource(R.raw.brani);
+        InputStream fileLetto = res.openRawResource(id);
         BufferedReader br = new BufferedReader(new InputStreamReader(fileLetto));
         try {
             while ((testoDaRestituire = br.readLine()) != null) {
