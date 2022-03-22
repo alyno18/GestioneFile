@@ -15,14 +15,17 @@ public class LeggiJSON {
 
 
         String jsonText = g.leggiFileRaw(c, id);
+        Brano br = null;
 
         try {
             JSONObject jsonRoot = new JSONObject(jsonText);
             String titolo = jsonRoot.getString("titolo");
             String artista = jsonRoot.getString("artista");
             String durata = jsonRoot.getString("durata");
+            br = new Brano(titolo, artista, durata);
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return br;
     }
 }

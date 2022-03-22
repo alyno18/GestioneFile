@@ -2,18 +2,12 @@ package com.example.gestionefile;
 
 public class Brano {
     private String titolo;
-    private String genere;
+    private String durata;
+    private String artista;
 
-    public String getTitolo() {
-        return titolo;
-    }
-
-    public String getGenere() {
-        return genere;
-    }
-
-    public Brano(String titolo, String genere){
+    public Brano(String titolo, String artista, String durata) {
         this.titolo = titolo;
-        this.genere = genere;
+        this.artista = artista;
+        this.durata = durata;
     }
 }
